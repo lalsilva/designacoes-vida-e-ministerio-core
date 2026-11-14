@@ -1,0 +1,25 @@
+{
+  "name": "@lalsilva/designacoes-vida-e-ministerio-core",
+  "version": "1.0.0",
+  "description": "Tipagens e motor de regras S-38 para o ecossistema VyM",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "keywords": [
+    "typescript",
+    "domain",
+    "s-38"
+  ],
+  "author": "Luiz",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
