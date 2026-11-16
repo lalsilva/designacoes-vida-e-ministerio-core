@@ -17,7 +17,7 @@
     "domain",
     "s-38"
   ],
-  "author": "Luiz",
+  "author": "Luiz Alberto Lucio da Silva",
   "license": "MIT",
   "devDependencies": {
     "typescript": "^5.0.0"
