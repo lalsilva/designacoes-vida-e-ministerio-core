@@ -84,3 +84,5 @@ export interface ICalendarEvent {
   responsibleName?: string; // Circuit Overseer or Memorial Speaker
   cancelsMidweekMeeting: boolean;
 }
+
+export * from "./validators/eligibility";
