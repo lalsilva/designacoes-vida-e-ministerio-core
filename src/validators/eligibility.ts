@@ -1,4 +1,4 @@
-import { IMeetingPart, IPublisher, MeetingSection, Privilege } from "../index";
+import { IMeetingPart, IPublisher, MeetingSection, Privilege } from "../types";
 
 /**
  * Standardized reason codes returned when an eligibility validation fails.
