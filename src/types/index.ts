@@ -203,3 +203,33 @@ export interface IValidationResult {
   /** Standardized error code explaining why the validation failed. Present only when `isValid` is `false`. */
   reasonCode?: ValidationReasonCode;
 }
+
+/**
+ * Ranked candidate returned by the main assignee suggestion engine,
+ * enriched with historical metadata to support UI display and decision-making.
+ */
+export interface IAssigneeCandidate {
+  /** Eligible publisher matching all S-38 and scheduling rules. */
+  publisher: IPublisher;
+  /** Indicates whether the publisher matches the part's preferred `targetPrivilege`. */
+  matchesTargetPrivilege: boolean;
+  /** Most recent date this publisher handled this exact part before the target date, or `null` if never. */
+  lastPartAssignmentDate: Date | null;
+  /** Most recent date this publisher had any assignment (assignee or assistant) before the target date, or `null` if never. */
+  lastAnyAssignmentDate: Date | null;
+}
+
+/**
+ * Ranked candidate returned by the assistant suggestion engine,
+ * enriched with pairing and historical metadata.
+ */
+export interface IAssistantCandidate {
+  /** Eligible publisher who can act as assistant on the target date. */
+  publisher: IPublisher;
+  /** Indicates whether the candidate belongs to the same family group as the main assignee. */
+  isSameFamily: boolean;
+  /** Most recent date this publisher acted as an assistant before the target date, or `null` if never. */
+  lastAssistantAssignmentDate: Date | null;
+  /** Most recent date this publisher had any assignment before the target date, or `null` if never. */
+  lastAnyAssignmentDate: Date | null;
+}
