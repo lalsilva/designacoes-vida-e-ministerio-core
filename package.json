@@ -1,25 +1,30 @@
 {
   "name": "@lalsilva/designacoes-vida-e-ministerio-core",
   "version": "1.0.0",
-  "description": "Tipagens e motor de regras S-38 para o ecossistema VyM",
+  "description": "Domain types, S-38 eligibility validators, and assignment suggestion engine for Life and Ministry meetings.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch",
-    "clean": "rm -rf dist"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm test && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lalsilva/designacoes-vida-e-ministerio-core.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "keywords": [
-    "typescript",
-    "domain",
-    "s-38"
-  ],
   "author": "Luiz Alberto Lucio da Silva",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "...",
+    "vitest": "..."
   }
 }
