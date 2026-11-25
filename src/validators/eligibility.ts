@@ -1,35 +1,11 @@
-import { IMeetingPart, IPublisher, MeetingSection, Privilege } from "../types";
-
-/**
- * Standardized reason codes returned when an eligibility validation fails.
- * Designed to be mapped to localized messages (i18n) by consuming applications.
- */
-export enum ValidationReasonCode {
-  /** Publisher is not marked as an active student for Ministry section parts. */
-  INACTIVE_STUDENT = "INACTIVE_STUDENT",
-  /** Publisher's gender does not match the gender required by the part. */
-  GENDER_MISMATCH = "GENDER_MISMATCH",
-  /** Publisher's privilege level is below the minimum required for the part. */
-  INSUFFICIENT_PRIVILEGE = "INSUFFICIENT_PRIVILEGE",
-  /** Attempted to assign an assistant to a part that does not require one. */
-  PART_DOES_NOT_REQUIRE_ASSISTANT = "PART_DOES_NOT_REQUIRE_ASSISTANT",
-  /** The same publisher cannot be both the main assignee and the assistant. */
-  ASSIGNEE_CANNOT_BE_SELF_ASSISTANT = "ASSIGNEE_CANNOT_BE_SELF_ASSISTANT",
-  /** The part strictly requires an assistant of the same gender as the assignee. */
-  ASSISTANT_MUST_BE_SAME_GENDER = "ASSISTANT_MUST_BE_SAME_GENDER",
-  /** The part requires an assistant of the same gender or from the same family group. */
-  ASSISTANT_MUST_BE_SAME_GENDER_OR_FAMILY = "ASSISTANT_MUST_BE_SAME_GENDER_OR_FAMILY",
-}
-
-/**
- * Result object returned by domain validation functions.
- */
-export interface IValidationResult {
-  /** Indicates whether the validation passed all rules. */
-  isValid: boolean;
-  /** Standardized error code explaining why the validation failed. Present only when `isValid` is `false`. */
-  reasonCode?: ValidationReasonCode;
-}
+import {
+  IMeetingPart,
+  IPublisher,
+  MeetingSection,
+  Privilege,
+  ValidationReasonCode,
+  IValidationResult,
+} from "../types";
 
 /**
  * Hierarchical weight used to compare publisher privileges against part requirements.
