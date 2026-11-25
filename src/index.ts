@@ -1,73 +1,86 @@
-export enum Genero {
-  Masculino = "M",
-  Feminino = "F",
+export enum Gender {
+  Male = "M",
+  Female = "F",
 }
 
-export enum Privilegio {
-  Anciao = "Ancião",
-  ServoMinisterial = "Servo Ministerial",
-  Publicador = "Publicador",
+export enum Privilege {
+  Elder = "ELDER",
+  MinisterialServant = "MINISTERIAL_SERVANT",
+  Publisher = "PUBLISHER",
 }
 
-export enum StatusEscala {
-  Agendado = "Agendado",
-  Confirmado = "Confirmado",
-  Substituido = "Substituído",
-  Cancelado = "Cancelado",
+export enum MaritalStatus {
+  Single = "SINGLE",
+  Married = "MARRIED",
+  Widowed = "WIDOWED",
+  Divorced = "DIVORCED",
 }
 
-export enum TipoEvento {
-  Normal = "Normal",
-  Assembleia = "Assembleia",
-  Congresso = "Congresso",
-  VisitaSuperintendente = "Visita Superintendente",
-  Celebracao = "Celebração",
-  FeriadoLocal = "Feriado Local",
+export enum MeetingSection {
+  Treasures = "TREASURES",
+  Ministry = "MINISTRY",
+  LivingAsChristians = "LIVING_AS_CHRISTIANS",
 }
 
-export interface IPublicador {
+export enum AssignmentStatus {
+  Scheduled = "SCHEDULED",
+  Confirmed = "CONFIRMED",
+  Substituted = "SUBSTITUTED",
+  Canceled = "CANCELED",
+}
+
+export enum CalendarEventType {
+  Normal = "NORMAL",
+  Assembly = "ASSEMBLY",
+  Convention = "CONVENTION",
+  CircuitOverseerVisit = "CIRCUIT_OVERSEER_VISIT",
+  Memorial = "MEMORIAL",
+  LocalHoliday = "LOCAL_HOLIDAY",
+}
+
+export interface IPublisher {
   id: string;
-  nomeCompleto: string;
-  genero: Genero;
-  estadoCivil: "Solteiro" | "Casado" | "Viúvo" | "Divorciado";
-  paiMae: boolean;
-  menorIdade: boolean;
-  batizado: boolean;
-  grupoFamiliarId?: string;
-  privilegio: Privilegio;
-  designacaoEspecial?: string;
-  aprovadoPresidente: boolean;
-  aprovadoDirigenteEbc: boolean;
-  fazOracao: boolean;
-  leEstudoBiblico: boolean;
-  estudanteAtivo: boolean;
+  fullName: string;
+  gender: Gender;
+  maritalStatus: MaritalStatus;
+  isParent: boolean;
+  isMinor: boolean;
+  isBaptized: boolean;
+  familyGroupId?: string;
+  privilege: Privilege;
+  specialAssignment?: string; // e.g., Service Overseer, Accounts Servant
+  isApprovedChairman: boolean;
+  isApprovedCbsConductor: boolean;
+  canPray: boolean;
+  canReadCbs: boolean;
+  isActiveStudent: boolean;
 }
 
-export interface IParteReuniao {
+export interface IMeetingPart {
   id: string;
-  secao: "Tesouros" | "Ministerio" | "Vida Crista";
-  nomeParte: string;
-  generoExigido: Genero | "Qualquer";
-  privilegioMinimo: Privilegio;
-  privilegioAlvo?: Privilegio;
-  exigeAjudante: boolean;
-  restringeAjudanteFamiliaOuMesmoSexo: boolean;
+  section: MeetingSection;
+  name: string;
+  requiredGender: Gender | "ANY";
+  minimumPrivilege: Privilege;
+  targetPrivilege?: Privilege; // e.g., MinisterialServant for Spiritual Gems
+  requiresAssistant: boolean;
+  allowsFamilyAssistant: boolean; // true: Starting a Conversation / Explaining Beliefs; false: Following Up / Making Disciples
 }
 
-export interface IEscala {
+export interface IAssignment {
   id: string;
-  dataReuniao: Date;
-  parteId: string;
-  titularId: string;
-  ajudanteId?: string;
-  status: StatusEscala;
+  meetingDate: Date;
+  partId: string;
+  assigneeId: string;
+  assistantId?: string;
+  status: AssignmentStatus;
 }
 
-export interface IEventoCalendario {
+export interface ICalendarEvent {
   id: string;
-  dataEvento: Date;
-  tipo: TipoEvento;
-  descricao?: string;
-  nomeResponsavel?: string;
-  cancelaReuniaoMeioSemana: boolean;
+  eventDate: Date;
+  type: CalendarEventType;
+  description?: string;
+  responsibleName?: string; // Circuit Overseer or Memorial Speaker
+  cancelsMidweekMeeting: boolean;
 }
